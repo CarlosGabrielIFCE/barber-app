@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.name.valid && (form.controls.name.dirty || form.controls.name.touched)" color="danger">
+        <div [hidden]="!form.controls.name.errors.required">
+          O campo é obrigatório
+        </div>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Data de Nascimento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" formControlName="bornDate"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.bornDate.valid && (form.controls.bornDate.dirty || form.controls.bornDate.touched)" color="danger">
+        <div [hidden]="!form.controls.bornDate.errors.required">
+          O campo é obrigatório
+        </div>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Telefone</ion-label>
+        <ion-input type="tel" formControlName="phone"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.phone.valid && (form.controls.phone.dirty || form.controls.phone.touched)" color="danger">
+        <div [hidden]="!form.controls.phone.errors.required">
+          O campo é obrigatório
+        </div>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Endereço</ion-label>
+        <ion-input type="text" formControlName="address"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.address.valid && (form.controls.address.dirty || form.controls.address.touched)" color="danger">
+        <div [hidden]="!form.controls.address.errors.required">
+          O campo é obrigatório
+        </div>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label stacked>Valor do Corte</ion-label>
+        <ion-input type="text" formControlName="salary"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.salary.valid && (form.controls.salary.dirty || form.controls.salary.touched)" color="danger">
+        <div [hidden]="!form.controls.salary.errors.required">
+          O campo é obrigatório
+        </div>
+      </ion-item>
+  
+      <div padding>
+        <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
+      </div>
+    </form>
+  </ion-content>

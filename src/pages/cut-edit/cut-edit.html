@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Cliente</ion-label>
+      <ion-select [(ngModel)]="cut.client">
+        <ion-option *ngFor="let client of clients" [value]="client">{{ client.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <p *ngIf="cut.key != undefined">Cliente Selecionado: {{ cut.client.name }}</p>
+
+    <ion-item>
+      <ion-label>Barbeiro</ion-label>
+      <ion-select [(ngModel)]="cut.employee">
+        <ion-option *ngFor="let employee of employees" [value]="employee">{{ employee.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <p *ngIf="cut.key != undefined">Modelo Selecionado: {{ cut.employee.name }}</p>
+    <ion-item>
+      <ion-label>Modelo de Corte</ion-label>
+      <ion-select [(ngModel)]="cut.model">
+        <ion-option *ngFor="let cutModel of cutModels" [value]="cutModel">{{ cutModel.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <p *ngIf="cut.key != undefined">Modelo Selecionado: {{ cut.model.name }}</p>
+
+    <ion-item>
+      <ion-label>Data do Corte</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="cut.date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hora do corte</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="cut.time"></ion-datetime>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="onSubmit()">Salvar</button>
+
+
+</ion-content>

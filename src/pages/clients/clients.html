@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Clientes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let client of clients | async">
+      <ion-item>
+        <h1>{{ client.name }}</h1>
+        <p>Data de nascimento: {{ client.bornDate }}</p>        
+        <p>Contato: {{ client.phone }}</p>
+        <p>Endereço: {{ client.address }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editClient(client)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeClient(client.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="newClient()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

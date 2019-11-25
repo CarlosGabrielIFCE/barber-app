@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Modelos de Corte
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-list *ngFor="let cutModel of cutModels | async">
+
+    <ion-card (press)="editCutModel(cutModel)">
+      <img [src]="cutModel.img" />
+      <div class="card-title">{{ cutModel.name}}</div>
+      <div class="card-subtitle">R$: {{ cutModel.value }}</div>
+    </ion-card>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="newCutModel()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

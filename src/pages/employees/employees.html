@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Empregados
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let employee of employees | async">
+      <ion-item>
+        <h1>{{ employee.name }}</h1>
+        <p>Data de Nascimento: {{ employee.bornDate}}</p>
+        <p>Contato: {{ employee.phone }}</p>
+        <p>Endereço: {{ employee.address }}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editEmployee(employee)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeEmployee(employee.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="newEmployee()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
